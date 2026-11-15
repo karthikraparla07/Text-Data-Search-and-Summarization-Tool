@@ -1,0 +1,26 @@
+TEXT DATA ANALYSIS REPORT
+=========================
+Input file: data/sample.txt
+Generated on: 2026-11-11 03:40:59
+
+Total words (including stop words): 85
+Unique words (including stop words): 53
+
+Sentences: 10
+Total words in sentences: 85
+Average sentence length: 8.50 words
+Shortest sentence: 5 words
+Longest sentence: 15 words
+
+Top 10 words (excluding stop words):
+WORD	COUNT
+students	7
+library	5
+research	4
+data	3
+digital	3
+university	3
+analysis	2
+articles	2
+books	2
+access	1

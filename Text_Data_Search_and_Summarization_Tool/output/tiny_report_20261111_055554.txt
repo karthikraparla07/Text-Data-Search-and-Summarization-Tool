@@ -1,0 +1,19 @@
+TEXT DATA ANALYSIS REPORT
+=========================
+Input file: /tmp/tmp.LWBCfTNumz/tiny.txt
+Generated on: 2026-11-11 05:55:54
+
+Total words (including stop words): 13
+Unique words (including stop words): 7
+
+Sentences: 4
+Total words in sentences: 13
+Average sentence length: 3.25 words
+Shortest sentence: 2 words
+Longest sentence: 4 words
+
+Top 3 words (excluding stop words):
+WORD	COUNT
+apple	4
+banana	3
+red	1

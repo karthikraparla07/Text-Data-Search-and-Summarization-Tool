@@ -1,0 +1,7 @@
+<h1>University Digital Library</h1>
+The university library supports students with books, research papers, and digital resources.
+Students visit the library every day. The library offers quiet study spaces and computer access!
+Research is important for students. Students use computers for programming, research, and data analysis.
+The digital library stores articles, books, and journals. Many students search for articles about science.
+Data analysis helps students discover patterns in research data. Searching large text collections saves time.
+The university encourages students to read, learn, and explore new ideas.

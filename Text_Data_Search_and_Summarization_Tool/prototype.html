@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>TextScope — Search & Summarize</title>
+<style>
+:root{color-scheme:dark;--bg:#090f1c;--panel:#101a2b;--panel2:#142035;--line:#253650;--muted:#94a6be;--white:#f4f8ff;--accent:#60d6c3;--blue:#6d9dff;--orange:#ffbe77}*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--white)}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}.app{min-height:100vh;display:grid;grid-template-columns:245px 1fr}.sidebar{padding:28px 16px;background:#0d1625;border-right:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px;padding:0 12px 32px;font-size:22px;font-weight:800;letter-spacing:-.7px}.mark{display:grid;place-items:center;width:38px;height:38px;background:linear-gradient(135deg,#5fe0bd,#527feb);border-radius:12px;color:#071625;font-size:22px}.aside-caption{font-size:11px;letter-spacing:2px;color:#7287a4;margin:18px 13px 12px;font-weight:800}.nav{width:100%;background:transparent;color:#a2b2c9;border:1px solid transparent;border-radius:11px;display:flex;gap:13px;align-items:center;padding:13px;text-align:left;margin-bottom:4px}.nav.active{background:#16344b;color:#8bf3dd;border-color:#275568}.nav:hover{background:#18283b}.nav .ico{font-size:19px;width:22px;text-align:center}.aside-footer{margin:55px 12px 0;border-top:1px solid var(--line);padding-top:18px;color:#7c91ab;font-size:12px}.aside-footer strong{color:#c4d5e9}.main{padding:34px clamp(20px,4vw,60px) 60px;max-width:1580px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:28px}.eyebrow{letter-spacing:2px;color:var(--accent);font-size:11px;font-weight:800;text-transform:uppercase}h1{font-size:clamp(28px,3vw,38px);line-height:1.12;letter-spacing:-1.5px;margin:9px 0 9px}p{color:var(--muted);margin:0}.chip{background:#183b37;color:#90edd7;border:1px solid #2c7567;padding:8px 13px;border-radius:30px;font-size:12px;white-space:nowrap;font-weight:700}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}.stat,.panel{border:1px solid var(--line);border-radius:15px;background:var(--panel)}.stat{padding:20px}.stat .k{font-size:12px;color:var(--muted)}.stat .v{font-size:29px;font-weight:800;margin:10px 0 1px;letter-spacing:-1px}.stat .foot{font-size:11px;color:#80bcae}.workspace{display:grid;grid-template-columns:minmax(300px,.85fr) minmax(390px,1.15fr);gap:18px}.panel{padding:22px;min-width:0}.panel-header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}.panel h2{font-size:17px;letter-spacing:-.3px;margin:0}.tiny{color:var(--muted);font-size:12px}.upload{border:1px dashed #3c6176;background:#101f32;border-radius:12px;padding:21px;text-align:center;margin-bottom:15px;cursor:pointer;transition:.2s}.upload:hover{border-color:var(--accent);background:#162c3e}.upload b{display:block;margin-bottom:3px}.upload small{color:var(--muted)}textarea{display:block;width:100%;resize:vertical;min-height:205px;border:1px solid var(--line);border-radius:11px;padding:16px;background:#0a1423;color:#dceafa;line-height:1.75}.actions{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0 0}.btn{border-radius:9px;border:1px solid var(--line);background:#1b2a40;color:#e7f0ff;padding:10px 15px;font-size:13px;font-weight:750}.btn.primary{border-color:#65dbcc;background:#60dcc5;color:#082422}.btn:hover{filter:brightness(1.12)}.field{width:100%;padding:11px 13px;background:#0a1423;color:white;border:1px solid #344660;border-radius:9px}.row{display:flex;gap:9px;align-items:center}.row .grow{flex:1}.result{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;background:#091423;border:1px solid #263952;border-radius:10px;padding:16px;min-height:190px;max-height:420px;overflow:auto;color:#cbe6ee}.barrow{display:grid;grid-template-columns:110px 1fr 35px;align-items:center;gap:10px;margin:11px 0;color:#bbccdd;font-size:13px}.track{height:10px;background:#26374e;border-radius:50px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#3bbda9,#68a8ec);border-radius:50px}.muted{color:var(--muted)}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}.options{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin:15px 0}.options label{color:var(--muted);font-size:13px}input[type=number]{width:70px}.notice{margin:12px 0;font-size:12px;color:var(--accent)}.hidden{display:none!important}.stack{display:grid;gap:15px}.info{font-size:12px;color:var(--muted);margin-top:12px}.empty{padding:28px 10px;text-align:center;color:var(--muted)}@media(max-width:1100px){.cards{grid-template-columns:repeat(2,1fr)}.workspace{grid-template-columns:1fr}}@media(max-width:690px){.app{display:block}.sidebar{display:flex;align-items:center;gap:5px;overflow-x:auto;padding:12px}.brand{font-size:16px;padding:0 12px 0 0;white-space:nowrap}.aside-caption,.aside-footer{display:none}.nav{white-space:nowrap;padding:8px 10px;font-size:12px;margin:0}.nav .ico{display:none}.main{padding:24px 16px}.top{display:block}.chip{display:inline-block;margin-top:16px}.cards{gap:8px}.stat{padding:14px}.stat .v{font-size:23px}.panel{padding:16px}}
+
+/* Refined dataset uploader and Safari-friendly responsive layout */
+.app{grid-template-columns:245px minmax(0,1fr)}
+.main{min-width:0}
+.workspace{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.panel-header{min-width:0}
+#file-label{max-width:42%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right}
+.upload{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
+  min-height:188px;width:100%;max-width:100%;padding:23px 15px;margin-bottom:16px;
+  border:1.5px dashed #45798a;border-radius:16px;background:linear-gradient(145deg,#12263b,#112033);
+  text-align:center;overflow:hidden;overflow-wrap:anywhere;cursor:pointer}
+.upload:hover,.upload:focus-within{border-color:#60dcc5;background:linear-gradient(145deg,#15334a,#13283b)}
+.upload-symbol{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;
+  background:#214b56;color:#9ef2e2;font-size:27px;line-height:1;font-weight:600;flex:none}
+.upload-copy{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;max-width:100%}
+.upload-copy strong{font-size:15px;line-height:1.35;color:#f4f8ff}
+.upload-subtitle{font-size:12px;line-height:1.5;color:#a4b6ce}
+.upload-meta{font-size:11px;line-height:1.5;color:#7e98b4}
+.upload-button{display:inline-flex;align-items:center;justify-content:center;margin-top:4px;padding:8px 15px;
+  border-radius:9px;border:1px solid #497c7a;background:#1d4e4c;color:#b4fff0;font-size:12px;font-weight:750}
+.upload:active .upload-button{transform:translateY(1px)}
+textarea{max-width:100%;min-height:180px}
+@media(max-width:1300px){.workspace{grid-template-columns:1fr}}
+@media(max-width:690px){.app{display:block}.workspace{grid-template-columns:minmax(0,1fr)}.upload{min-height:172px;padding:18px 12px}}
+
+/* Premium Dark Dashboard — visual-only refresh; existing workflows preserved */
+:root{
+  --bg:#0b1120;--panel:#121e30;--panel2:#17263b;--line:#293a52;
+  --muted:#9baec7;--white:#f6f9ff;--accent:#5ad5bf;--blue:#72a6df;
+}
+html{-webkit-font-smoothing:antialiased}
+body{background:radial-gradient(ellipse 65% 38% at 80% -12%,#13243a 0%,transparent 80%),var(--bg);font-size:14px}
+.sidebar{background:#0d1726;padding-top:28px}
+.brand{letter-spacing:-.85px;font-size:22px;padding-bottom:38px}
+.mark{border-radius:11px;box-shadow:0 5px 24px #4bc4b022;background:linear-gradient(145deg,#61dec8,#5f98e8)}
+.aside-caption{color:#7891ae;font-size:10px;letter-spacing:2.4px}
+.nav{border-radius:10px;padding:13px 14px;transition:background .18s,color .18s,border-color .18s}
+.nav:hover{background:#192b40;color:#e1efff}
+.nav.active{background:linear-gradient(115deg,#193a4d,#193246);border-color:#326275;color:#a2f2e4;box-shadow:inset 3px 0 0 #57d8c4}
+.aside-footer{margin-top:72px;line-height:1.85}
+.main{max-width:1600px;padding-top:38px}
+.top{margin-bottom:31px;align-items:center}
+.eyebrow{letter-spacing:2.5px;font-size:10px}
+h1{font-weight:780;font-size:clamp(29px,3vw,39px);letter-spacing:-1.45px;margin:10px 0}
+.top p{font-size:14px}
+.chip{background:#12352f;border-color:#347666;color:#9bebd9;padding:9px 14px;font-weight:650}
+.cards{gap:16px;margin-bottom:23px}
+.stat,.panel{background:linear-gradient(145deg,#142035 0%,#111b2c 100%);border-color:#2b3c55;box-shadow:0 10px 28px #030b1622}
+.stat{padding:21px 22px;min-height:137px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+.stat:before{content:'';position:absolute;left:0;top:23px;bottom:23px;width:2px;background:#4fceba99;border-radius:3px}
+.stat:hover{transform:translateY(-2px);border-color:#3b6074}
+.stat .k{font-size:12px;letter-spacing:.1px}
+.stat .v{font-size:31px;letter-spacing:-1.25px;margin:10px 0 2px}
+.stat .foot{font-size:11px;color:#86c8b7}
+.workspace{gap:20px}
+.panel{border-radius:16px;padding:23px}
+.panel-header{margin-bottom:18px}
+.panel h2{font-size:17px;font-weight:730;letter-spacing:-.35px}
+.tiny{font-size:11px;color:#a0b1c9}
+.upload{min-height:190px;background:linear-gradient(150deg,#152a3c,#142235);border-color:#468093;border-radius:14px;box-shadow:inset 0 0 0 1px #27445b44;transition:background .18s,border-color .18s,transform .18s}
+.upload:hover{background:linear-gradient(150deg,#1a3445,#16283c);border-color:#74dccc;transform:translateY(-1px)}
+.upload-symbol{border-radius:12px;background:#204b54;color:#a1f9e7}
+.upload-copy strong{font-weight:740;font-size:15px}
+.upload-button{background:#22554f;border-color:#3e897c;color:#d0fff1;transition:background .2s}
+.upload:hover .upload-button{background:#2e7065}
+textarea,.field{background:#0c1829;color:#e7f3ff;border-color:#30435a;box-shadow:inset 0 1px 2px #050b171f}
+textarea{line-height:1.72;border-radius:11px}
+textarea::placeholder,.field::placeholder{color:#8497af}
+.btn{background:#203047;color:#e4effd;border:1px solid #30435f;border-radius:9px;transition:background .18s,transform .18s,filter .18s}
+.btn:hover{background:#293e56;filter:none;transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(110deg,#68e0ca,#54cdb9);border-color:#78e5d2;color:#0a2929;box-shadow:0 3px 12px #3dd2b31c}
+.btn.primary:hover{background:linear-gradient(110deg,#83efdc,#65deca)}
+.bar row{min-width:0}
+.barrow{grid-template-columns:minmax(78px,104px) 1fr 28px;gap:13px;margin:12px 0;min-width:0}
+.barrow span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.barrow b{font-size:12px;color:#d4e4f2;font-variant-numeric:tabular-nums}
+.track{height:9px;background:#293d54}
+.fill{background:linear-gradient(90deg,#4bcbb5,#70b2e9)}
+.result{background:#0b1829;border-color:#30435b;line-height:1.75}
+.notice{color:#77ddc7;font-size:12px}
+.options{gap:15px}
+.options label{display:inline-flex;align-items:center;gap:7px}
+input[type=checkbox]{accent-color:#54d1ba}
+.info{line-height:1.65}
+#sentence-results>div{background:#17263b!important;border-color:#2d4159!important}
+#app-error:not(:empty){padding:11px 14px;background:#442725;border:1px solid #814a47;border-radius:10px}
+@media(max-width:1300px){.workspace{grid-template-columns:1fr}.main{max-width:1150px}}
+@media(max-width:690px){.sidebar{padding:12px}.main{padding:23px 15px}.top{margin-bottom:22px}.stat{min-height:115px;padding:16px}.stat .v{font-size:24px}.cards{gap:9px}.panel{padding:17px}.barrow{grid-template-columns:minmax(68px,92px) 1fr 25px}}
+@media(prefers-reduced-motion:reduce){.nav,.stat,.upload,.btn{transition:none!important}}
+
+</style></head><body>
+<div class="app"><aside class="sidebar"><div class="brand"><span class="mark">⌕</span><span>TextScope<span style="color:var(--accent)">.</span></span></div><div class="aside-caption">WORKSPACE</div>
+<button class="nav active" data-tab="overview"><span class="ico">▦</span> Overview</button><button class="nav" data-tab="search"><span class="ico">⌕</span> Pattern Search</button><button class="nav" data-tab="frequency"><span class="ico">▥</span> Word Frequency</button><button class="nav" data-tab="sentences"><span class="ico">≡</span> Sentence Analysis</button><button class="nav" data-tab="clean"><span class="ico">✦</span> Text Cleanup</button><button class="nav" data-tab="report"><span class="ico">⇩</span> Export Report</button>
+<div class="aside-footer">BUILT WITH<br/><strong>Shell · grep · awk · sed</strong><br/>Scripting Workshop · Project 19</div></aside>
+<main class="main"><div class="top"><div><div class="eyebrow">Scripting Workshop / Project 19</div><h1>Text Data Analysis <span style="color:var(--accent)">Studio</span></h1><p>Search patterns, reveal word trends, and summarize any text dataset.</p></div><span class="chip">● Local prototype · Live</span></div>
+<section class="cards"><div class="stat"><div class="k">Total words</div><div class="v" id="words">—</div><div class="foot">Dataset word count</div></div><div class="stat"><div class="k">Unique words</div><div class="v" id="unique">—</div><div class="foot">Vocabulary diversity</div></div><div class="stat"><div class="k">Sentences</div><div class="v" id="sentences">—</div><div class="foot">Sentence boundaries</div></div><div class="stat"><div class="k">Avg. sentence length</div><div class="v" id="average">—</div><div class="foot">Words per sentence</div></div></section>
+<div class="workspace"><section class="panel"><div class="panel-header"><h2>📄 Your dataset</h2><span id="file-label" class="tiny">sample.txt</span></div><label class="upload" for="file" aria-label="Choose a text or HTML dataset"><span class="upload-symbol" aria-hidden="true">↑</span><span class="upload-copy"><strong>Upload a dataset</strong><span class="upload-subtitle">Choose a text or HTML file from your Mac</span><span class="upload-meta">TXT, HTML, HTM <span aria-hidden="true">·</span> Max 2 MB</span></span><span class="upload-button">Browse files</span></label><input id="file" type="file" accept=".txt,.html,.htm,text/plain,text/html" hidden/><textarea id="source" spellcheck="false" placeholder="Paste text here, or upload a file..."></textarea><div class="actions"><button class="btn primary" id="analyze">↻ Analyze text</button><button class="btn" id="sample">Load sample</button><button class="btn" id="clear">Clear</button></div><div class="info">Your text is processed locally using the bundled Bash tools. Nothing is uploaded to an external service.</div></section>
+<section class="panel"><div id="overview" class="view"><div class="panel-header"><h2>Analysis overview</h2><span class="tiny">Top 8 keywords</span></div><div id="overview-bars"></div><div class="notice" id="overview-notice">Analyzing sample dataset…</div><div style="border-top:1px solid var(--line);padding-top:18px;margin-top:22px"><h2 style="margin-bottom:10px">How it works</h2><p style="font-size:13px">Text cleanup uses <b style="color:#a0dcfa">sed</b>, regex search uses <b style="color:#a0dcfa">grep</b>, and word counting plus sentence statistics use <b style="color:#a0dcfa">awk</b>.</p></div></div>
+<div id="search" class="view hidden"><div class="panel-header"><h2>🔎 Pattern search</h2><span class="tiny">grep -Ein</span></div><p style="font-size:13px;margin-bottom:17px">Find matching lines with a word or extended regular expression.</p><div class="row"><input class="field grow" id="pattern" value="library|research" placeholder="Regex, e.g. data|science"/><button class="btn primary" id="run-search">Search</button></div><div class="notice" id="search-status"></div><pre class="result" id="search-output">Enter a pattern and click Search.</pre></div>
+<div id="frequency" class="view hidden"><div class="panel-header"><h2>▥ Word frequency</h2><span class="tiny">awk · sort</span></div><div class="options"><label>Top <input class="field" type="number" min="1" max="100" value="10" id="top-n"/> words</label><label><input type="checkbox" checked id="stopwords"/> Remove stop words</label><button class="btn primary" id="run-frequency">Refresh</button></div><div id="frequency-bars"></div></div>
+<div id="sentences-view" class="view hidden"><div class="panel-header"><h2>≡ Sentence statistics</h2><span class="tiny">awk</span></div><div id="sentence-results" class="stack"><div class="empty">Analyze a dataset to see sentence statistics.</div></div></div>
+<div id="clean" class="view hidden"><div class="panel-header"><h2>✦ Cleaned text</h2><span class="tiny">sed</span></div><p style="font-size:13px;margin-bottom:15px">HTML tags and punctuation are removed; words are preserved.</p><pre class="result" id="clean-output">No data analyzed yet.</pre><div class="actions"><button class="btn" id="download-clean">Download cleaned .txt</button></div></div>
+<div id="report" class="view hidden"><div class="panel-header"><h2>⇩ Summary report</h2><span class="tiny">Bash + awk + sed</span></div><p style="font-size:13px;margin-bottom:15px">A ready-to-save report with counts, sentence metrics, and keywords.</p><pre class="result" id="report-output">No report generated yet.</pre><div class="actions"><button class="btn primary" id="generate-report">Generate report</button><button class="btn" id="download-report">Download .txt report</button></div></div>
+</section></div><div id="app-error" style="color:#ffb9ae;margin-top:12px;font-size:13px" role="alert"></div></main></div>
+<script>
+const $=id=>document.getElementById(id), state={clean:'',report:'',text:'',freq:[]};
+const views=['overview','search','frequency','sentences-view','clean','report'];
+function active(tab){document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));views.forEach(v=>$(v).classList.toggle('hidden',v!==(tab==='sentences'?'sentences-view':tab)));}
+document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>active(b.dataset.tab)));
+async function api(action,extra={}){const r=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:$('source').value,action,...extra})});const data=await r.json();if(!data.ok)throw Error(data.error||'Analysis failed');return data.output;}
+function bars(container,items){if(!items.length){$(container).innerHTML='<div class="empty">No words found in this dataset.</div>';return}let m=Math.max(...items.map(x=>x.count));$(container).innerHTML=items.map(x=>`<div class="barrow"><span title="${esc(x.word)}">${esc(x.word)}</span><div class="track"><div class="fill" style="width:${x.count/m*100}%"></div></div><b>${x.count}</b></div>`).join('');}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function parseFreq(s){return s.trim().split('\n').slice(1).map(line=>{const [word,num]=line.split('\t');return {word,count:Number(num)}}).filter(x=>x.word&&Number.isFinite(x.count));}
+function parseSentences(s){const vals={};s.split('\n').forEach(line=>{const i=line.indexOf(':');if(i>=0)vals[line.slice(0,i).trim()]=line.slice(i+1).trim()});return vals;}
+function setError(e){$('app-error').textContent=e?String(e):'';}
+async function analyze(){setError('');$('analyze').disabled=true;$('analyze').textContent='Analyzing…';try{const [frequency,all,stats,clean,report]=await Promise.all([api('frequency',{n:10}),api('frequency',{n:100,remove_stopwords:false}),api('sentences'),api('clean'),api('report',{n:10})]);const f=parseFreq(frequency),a=parseFreq(all),st=parseSentences(stats);const total=Number((report.match(/Total words \(including stop words\):\s*(\d+)/)||[])[1]||0);const unique=Number((report.match(/Unique words \(including stop words\):\s*(\d+)/)||[])[1]||0);$('words').textContent=total.toLocaleString();$('unique').textContent=unique.toLocaleString();$('sentences').textContent=st.Sentences||'0';$('average').textContent=st['Average sentence length']||'0';bars('overview-bars',f.slice(0,8));state.freq=f;state.clean=clean;state.report=report;$('clean-output').textContent=clean||'No words found.';$('report-output').textContent=report;const metrics=[['Total sentences',st.Sentences],['Avg. sentence length',st['Average sentence length']],['Shortest sentence',st['Shortest sentence']],['Longest sentence',st['Longest sentence']]];$('sentence-results').innerHTML=metrics.map(([k,v])=>`<div style="display:flex;justify-content:space-between;padding:15px;background:#142138;border:1px solid #283a52;border-radius:9px"><span class="muted">${esc(k)}</span><b>${esc(v||'0')}</b></div>`).join('');$('overview-notice').textContent=`Analysis complete · ${Math.min(f.length,8)} top keywords displayed, stop words excluded.`;await frequencyRefresh();}catch(e){setError(e.message)}finally{$('analyze').disabled=false;$('analyze').textContent='↻ Analyze text'}}
+async function frequencyRefresh(){try{const n=Math.max(1,Math.min(100,Number($('top-n').value)||10));const raw=await api('frequency',{n,remove_stopwords:$('stopwords').checked});bars('frequency-bars',parseFreq(raw));}catch(e){setError(e.message)}}
+$('analyze').onclick=analyze;$('run-frequency').onclick=frequencyRefresh;$('run-search').onclick=async()=>{setError('');try{const result=await api('search',{pattern:$('pattern').value});$('search-output').textContent=result;$('search-status').textContent=result.startsWith('No matches')?'No matching lines.':`${result.split('\n').filter(Boolean).length} matching lines found.`;}catch(e){setError(e.message)}};
+$('generate-report').onclick=async()=>{try{state.report=await api('report',{n:Number($('top-n').value)||10});$('report-output').textContent=state.report;}catch(e){setError(e.message)}};
+function download(name,text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)}
+$('download-clean').onclick=()=>download('cleaned_text.txt',state.clean);$('download-report').onclick=()=>download('text_analysis_report.txt',state.report);
+$('file').onchange=async e=>{const f=e.target.files[0];if(!f)return;if(f.size>2*1024*1024){setError('Please choose a file smaller than 2 MB.');return}$('source').value=await f.text();$('file-label').textContent=f.name;await analyze()};
+$('clear').onclick=()=>{$('source').value='';$('file-label').textContent='Untitled';analyze()};$('sample').onclick=loadSample;
+async function loadSample(){try{const r=await fetch('/api/sample');if(!r.ok)throw Error('Could not load sample');$('source').value=(await r.json()).text;$('file-label').textContent='sample.txt';await analyze();}catch(e){setError(e.message)}}loadSample();
+</script></body></html>
